@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <style>
+            body{
+                margin: 0px;
+            }
+            @keyframes perspective{
+                50%{
+                    perspective: 1px ;
+                }
+            }
+            body {
+                height: 100%;
+                padding: 0;
+                box-sizing: border-box;
+                overflow: hidden;
+
+            }
+            #index{
+                height: 100%;
+                background-color: black;
+                perspective: 100000px;
+                display: flex;
+            }
+            #index .loaded .matrix{
+                height: 100vh;
+            }
+            #index.loaded{
+                animation: perspective 30s 5s alternate infinite;
+            }
+            .matrix{
+                height: 0;
+                position: relative;
+                top: 0%;
+                opacity: 0.8;
+                padding: 0 5px;
+                color: green;
+                text-shadow: 0 1px 2px rgba(10, 255, 10, 0.8);
+                letter-spacing: 2px;
+                transition: all 5s;
+                border-radius: 0 5px 5px 0;
+                flex: 1 0 auto;
+                white-space: nowrap;
+                writing-mode: vertical-lr;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+    <div id="index"></div>
+    </body>
+    <script>
+        function show(){
+
+            const b = document.getElementsByClassName("matrix");
+            const num = '0123456789';
+            const eng = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZx'
+            const rus = '401152000620014202520025620052014001000444444440000'
+            const heker = '0101010101010101010101010101010101010101010101001110'
+            const sArray = [num,eng,rus,heker]
+            const s_string = sArray.join('')
+
+            const randomized = () => Math.floor(Math.random() * s_string.length);
+           
+            const shuffleStrings = () => sArray.sort() => randomized() - 0.5).join('');
+            
+            const sliced = () =>{
+
+                let random1 = randomized();
+                const prandom = random1
+                let random2 = randomized();
+                if(random < random2){
+
+                    random1 = random2;
+                    random2 = prandom;
+                }
+
+                return shuffleStrings().slice(random1,random2)
+            }
+            const a =document.querySeletor('#index');
+            const matrixbar = `<div clas=matrix></div>`;
+
+            for(let i = 0; i < s_string.length; i++ ){
+
+                a.innerHTML += matrixbar;
+                b[i].style.opacity = (Math.random() + .3) * 1;
+                b[i].style.transitionDelay = Math.random() * (b.length / 2) + "s";
+                b[i].style.transform = `translateZ(${Math.floor(Math.random() * window.innerWidth) + "px"})`;
+                b[i].innerHTML = shuffleStrings();
+            }
+
+            function init(){
+
+                a.className = "loaded":
+            }
+            setTimeout(init,2000);
+
+            setInterval(function () {
+
+                for(i = 0; i < s_string.length; i++){
+                    b[randomized()].innerHTML = sliced () + shuffleStrings();
+                }
+            },300);
+        }
+        show();
+    </script>
+</html>
